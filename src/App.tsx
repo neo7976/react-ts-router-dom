@@ -1,12 +1,15 @@
 import React, {FC} from 'react';
 import Navbar from "./components/Navbar";
+import TodoForm from "./components/TodoForm";
 
 
 const App: FC = () => {
     return <>
         <Navbar/>
         <div className="container">
-            <h1>Тест</h1>
+            <TodoForm/>
+
+
         </div>
     </>
 }
