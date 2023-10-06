@@ -24,13 +24,11 @@ export const TodoForm: FC<TodoFormProps> = (props) => {
         <form onSubmit={handleSubmit}>
             <div className="input-field mt2">
                 <input
-                    // onChange={changeHandler}
                     // value={title}
                     type="text"
                     id='title'
                     placeholder='Введите название дела'
                     ref={ref}
-                    // onKeyPress={keyPressHandler} //dep
                 />
                 <label htmlFor="title" className='active'>
                     Введите название дела
