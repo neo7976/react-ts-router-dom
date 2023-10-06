@@ -3,7 +3,8 @@ import TodoForm from "../components/TodoForm";
 import TodoList from "../components/TodoList";
 import {ITodo} from "../interfaces";
 
-declare var confirm: (question: string) => boolean;
+/*Используем этот вариант или window.confirm при вызове метода не глобально
+declare var confirm: (question: string) => boolean;*/
 
 export const TodosPage: FC = () => {
 

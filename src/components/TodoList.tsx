@@ -36,7 +36,7 @@ export const TodoList: FC<TodoListProps> = ({todos, onRemove, onToggle}) => {
                                 onChange={() => onToggle(todo.id)}
                             />
                             <span>{todo.title}</span>
-                            <i className='materail-icons red-text'
+                            <i className="material-icons red-text"
                                onClick={event => removeHandler(event, todo.id)}
                             >delete</i>
                         </label>
