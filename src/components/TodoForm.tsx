@@ -1,6 +1,4 @@
-import React, {ChangeEvent, FC, FormEvent, useState} from "react";
-import {Simulate} from "react-dom/test-utils";
-import keyPress = Simulate.keyPress;
+import React, {FC, FormEvent, useRef} from "react";
 
 interface TodoFormProps {
     onAdd(title: string): void
@@ -8,34 +6,30 @@ interface TodoFormProps {
 
 
 export const TodoForm: FC<TodoFormProps> = (props) => {
-    const [title, setTitle] = useState<string>('');
+    // const [title, setTitle] = useState<string>('');
+    const ref = useRef<HTMLInputElement>(null)
+    // const changeHandler = (event: ChangeEvent<HTMLInputElement>) => {
+    //     setTitle(event.target.value);
+    // }
 
-    const changeHandler = (event: ChangeEvent<HTMLInputElement>) => {
-        setTitle(event.target.value);
-    }
-
-    //todo Требуется разобраться, так как dep метод для onKeyPress
     const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        props.onAdd(title)
-        setTitle('');
-    }
+        props.onAdd(ref.current!.value);
+        ref.current!.value = '';
 
-    // const keyPressHandler = (event: KeyboardEvent) => {
-    //     if (event.key === 'Enter') {
-    //         console.log('Нажали enter')
-    //     }
-    // }
+        // setTitle('');
+    }
 
     return (
         <form onSubmit={handleSubmit}>
             <div className="input-field mt2">
                 <input
-                    onChange={changeHandler}
-                    value={title}
+                    // onChange={changeHandler}
+                    // value={title}
                     type="text"
                     id='title'
                     placeholder='Введите название дела'
+                    ref={ref}
                     // onKeyPress={keyPressHandler} //dep
                 />
                 <label htmlFor="title" className='active'>
