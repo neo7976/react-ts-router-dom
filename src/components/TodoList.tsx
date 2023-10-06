@@ -1,4 +1,4 @@
-import React, {FC, useCallback} from "react";
+import React, {FC} from "react";
 import {ITodo} from "../interfaces";
 
 type TodoListProps = {
@@ -13,6 +13,11 @@ export const TodoList: FC<TodoListProps> = ({todos, onRemove, onToggle}) => {
 
     if (todos.length === 0) {
         return <p className="center">Пока дел нет:</p>
+    }
+
+    const removeHandler = (event: React.MouseEvent, id: number) => {
+        event.preventDefault();
+        onRemove(id);
     }
 
     return (
@@ -32,7 +37,7 @@ export const TodoList: FC<TodoListProps> = ({todos, onRemove, onToggle}) => {
                             />
                             <span>{todo.title}</span>
                             <i className='materail-icons red-text'
-                               onClick={() => onRemove(todo.id)}
+                               onClick={event => removeHandler(event, todo.id)}
                             >delete</i>
                         </label>
                     </li>
